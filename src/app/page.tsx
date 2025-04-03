@@ -45,7 +45,7 @@ export default function Home() {
     }
     
     // Check for rickroll easter egg
-    if (value.toLowerCase() === 'random') {
+    if (value.trim().toLowerCase() === 'random') {
       setShowRickroll(true);
       setShowEasterEgg(false);
       setShowBurnAlert(false);
@@ -166,10 +166,13 @@ export default function Home() {
               </p>
             </div>
           ) : positions.length > 0 ? (
-            <CableVisualizer
-              positions={positions}
-              numHoles={numHoles}
-            />
+            <div className="flex justify-center items-center w-full">
+              <CableVisualizer
+                positions={positions}
+                numHoles={numHoles}
+                className="border border-blue-500"
+              />
+            </div>
           ) : null}
         </div>
       </div>

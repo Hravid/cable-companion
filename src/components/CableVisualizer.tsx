@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 interface CableVisualizerProps {
   positions: CablePosition[];
   numHoles: number;
- 
+  className?: string;
 }
 
 export default function CableVisualizer({ positions, numHoles}: CableVisualizerProps) {
