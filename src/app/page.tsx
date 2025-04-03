@@ -169,7 +169,6 @@ export default function Home() {
             <CableVisualizer
               positions={positions}
               numHoles={numHoles}
-              numCables={numCables}
             />
           ) : null}
         </div>
