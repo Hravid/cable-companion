@@ -18,7 +18,9 @@ bun dev
 Open [http://localhost:PORT](http://localhost:PORT) with your browser to see the result.
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-*/components* contain CableVizualizer that renders 2d elements and my footer. I tried creating 3d model with three.js but it seemed like an overkill
+*/components* contain CableVizualizer that renders 2d elements and my footer. I tried creating 3d model with three.js but it seemed like an overkill.
+
+*/utils* contains cableCalculator that it whole logic behind cable/hole placement on the "ring". 
 
 ## THE IDEA
 
@@ -29,11 +31,11 @@ Well now they don't have to. If you know any guy with same struggles, share this
 
 ## TO DO
 
-0!.Fix the allert when trying to enter number larger than 9999 (idk why cause its input length locked but looks cool)
-1. Figure out better way to show patterns that are repeatable but got some extra element at the end
-2. Expand functionality after feedback from Mr.CableMaker 
-3. Write tests
-4. Make it look decent
-5. Change logo (maybe)
+0. Fix the allert when trying to enter number larger than 9999 (idk why cause its input length locked but looks cool).
+1. Figure out better way to show patterns that are repeatable but got some extra element at the end.
+2. Expand functionality after feedback from Mr.CableMaker.
+3. Write tests.
+4. Make it look decent.
+5. Change logo (maybe).
 
->"Have you ever stopped to watch a bluebird drop from a tree, and take to the air? Me Neither Have you ever stopped to finish out a rhyme but the right words just weren't there? Meat Cleaver"
+>"Have you ever stopped to watch a bluebird drop from a tree, and take to the air? Me Neither. Have you ever stopped to finish out a rhyme but the right words just weren't there? Meat Cleaver"
