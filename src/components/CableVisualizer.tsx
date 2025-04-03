@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react';
 interface CableVisualizerProps {
   positions: CablePosition[];
   numHoles: number;
-  numCables: number;
+ 
 }
 
-export default function CableVisualizer({ positions, numHoles, numCables }: CableVisualizerProps) {
+export default function CableVisualizer({ positions, numHoles}: CableVisualizerProps) {
   const [dimensions, setDimensions] = useState({ width: 500, height: 500 });
   const radius = Math.min(dimensions.width, dimensions.height) * 0.36;
   const centerX = dimensions.width / 2;
@@ -28,7 +28,7 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const visualPositions = positions.map((pos, i) => {
+  const visualPositions = positions.map((pos) => {
     const angle = (pos.position / numHoles) * Math.PI * 2;
     return {
       x: centerX + radius * Math.cos(angle),
@@ -60,7 +60,7 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
     return pattern.trim();
   };
 
-  const findRepeatingPattern = (pattern: string) => {
+  const findRepeatingPattern = () => {
     const totalLength = positions.length;
     
     // Try different segment lengths from 2 up to half the total length
@@ -91,7 +91,7 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
   };
 
   const getPattern = () => {
-    const repeatingPattern = findRepeatingPattern('');
+    const repeatingPattern = findRepeatingPattern();
     
     if (repeatingPattern) {
       return (
