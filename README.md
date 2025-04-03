@@ -29,6 +29,7 @@ Well now they don't have to. If you know any guy with same struggles, share this
 
 ## TO DO
 
+0!.Fix the allert when trying to enter number larger than 9999 (idk why cause its input length locked but looks cool)
 1. Figure out better way to show patterns that are repeatable but got some extra element at the end
 2. Expand functionality after feedback from Mr.CableMaker 
 3. Write tests
