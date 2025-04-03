@@ -1,3 +1,4 @@
+import React from 'react';
 import { CablePosition } from '@/utils/cableCalculator';
 import { useEffect, useState } from 'react';
 
@@ -41,12 +42,12 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
     let pattern = '';
     let currentCount = 1;
     let isCable = !positions[start].isHole;
-
+    
     for (let i = start + 1; i <= start + length; i++) {
       if (i === start + length || positions[i]?.isHole !== positions[i-1].isHole) {
         pattern += `${currentCount} ${isCable 
           ? (currentCount === 1 ? 'CABLE' : 'CABLES') 
-          : (currentCount === 1 ? 'HOLE' : 'HOLES')} + `;
+          : (currentCount === 1 ? 'HOLE' : 'HOLES')} `;
         if (i < start + length) {
           currentCount = 1;
           isCable = !isCable;
@@ -55,11 +56,11 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
         currentCount++;
       }
     }
-
-    return pattern.slice(0, -3);
+    
+    return pattern.trim();
   };
 
-  const findRepeatingPattern = () => {
+  const findRepeatingPattern = (pattern: string) => {
     const totalLength = positions.length;
     
     // Try different segment lengths from 2 up to half the total length
@@ -69,33 +70,29 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
         const firstSegment = positions.slice(0, segmentLength);
         
         // Check if this segment repeats throughout the array
-        for (let i = segmentLength; i < totalLength; i += segmentLength) {
-          const currentSegment = positions.slice(i, i + segmentLength);
+        for (let j = segmentLength; j < totalLength; j += segmentLength) {
+          const currentSegment = positions.slice(j, j + segmentLength);
           if (!currentSegment.every((pos, index) => pos.isHole === firstSegment[index].isHole)) {
             isRepeating = false;
             break;
           }
         }
-
+        
         if (isRepeating) {
-          const repetitions = totalLength / segmentLength;
-          const basePattern = getPatternSegment(0, segmentLength);
           return {
-            base: basePattern,
-            repetitions: repetitions
+            base: getPatternSegment(0, segmentLength),
+            repetitions: totalLength / segmentLength
           };
         }
       }
     }
-
+    
     return null;
   };
 
-    // REPETITION PATTERN 
-    // TODO --> I didnt know how to represent situation where there is for example: [8 cables 1 hole 7 cables 1 hole] repeated 3 times and 
-    // then 8 cables again so it jjust shows the whole thing, maybe i should do [[8 cables 1 hole 7 cables 1 hole] + 8 cables]
   const getPattern = () => {
-    const repeatingPattern = findRepeatingPattern();
+    const repeatingPattern = findRepeatingPattern('');
+    
     if (repeatingPattern) {
       return (
         <div className="flex flex-col items-center gap-2">
@@ -147,7 +144,7 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
         >
           {/* Draw the circle */}
           <div 
-            className="absolute rounded-full"
+            className="absolute rounded-full content-center"
             style={{
               width: `${radius * 2}px`,
               height: `${radius * 2}px`,
@@ -166,7 +163,7 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
                   ? 'rounded-full flex items-center justify-center'
                   : 'rounded-full shadow-md'
               }`}
-              style={{
+              style={{ 
                 left: `${pos.x}px`,
                 top: `${pos.y}px`,
                 width: `${dotSize}px`,
@@ -190,7 +187,7 @@ export default function CableVisualizer({ positions, numHoles, numCables }: Cabl
             </div>
           ))}
         </div>
-
+        
         {/* Legend */}
         <div className="mt-4 sm:mt-6 flex justify-center gap-4 sm:gap-6 text-sm sm:text-base">
           <div className="flex items-center gap-2">
