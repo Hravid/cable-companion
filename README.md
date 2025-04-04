@@ -1,27 +1,3 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-
-Open [http://localhost:PORT](http://localhost:PORT) with your browser to see the result.
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-*/components* contain CableVizualizer that renders 2d elements and my footer. I tried creating 3d model with three.js but it seemed like an overkill.
-
-*/utils* contains cableCalculator that it whole logic behind cable/hole placement on the "ring". 
-
 ## THE IDEA
 
 Project was created to help super cool guy, that works in cable factory *(or sum idk he makes cables happen)*. 
@@ -37,5 +13,26 @@ Well now they don't have to. If you know any guy with same struggles, share this
 3. Write tests.
 4. Make it look decent.
 5. Change logo (maybe).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:PORT](http://localhost:PORT) with your browser to see the result.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+*/components* contain CableVizualizer that renders 2d elements and my footer. I tried creating 3d model with three.js but it seemed like an overkill.
+
+*/utils* contains cableCalculator that it whole logic behind cable/hole placement on the "ring". 
 
 >"Have you ever stopped to watch a bluebird drop from a tree, and take to the air? Me Neither. Have you ever stopped to finish out a rhyme but the right words just weren't there? Meat Cleaver"
